@@ -17,6 +17,8 @@ import { HeaderComponent } from './header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { DOCUMENT } from '@angular/platform-browser';
+import { MonitoringComponent } from './monitoring/monitoring.component';
+import { FormsModule } from '@angular/forms';
 
 const stompConfig: StompConfig = {
      url: "ws://" + window.location.hostname + ":" + window.location.port + "/api/updates",
@@ -33,13 +35,15 @@ const stompConfig: StompConfig = {
     AppComponent,
     VehiclesComponent,
     MapComponent,
-    HeaderComponent
+    HeaderComponent,
+    MonitoringComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     LeafletModule.forRoot(),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [VehicleService,
               StompService,

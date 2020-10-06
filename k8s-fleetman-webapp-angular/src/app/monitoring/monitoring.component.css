@@ -1,0 +1,38 @@
+.monitoring__controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    height: 3rem;
+    border-bottom: 1px solid gray;
+}
+
+.monitoring__controls label {
+    font-size: 2em;
+}
+
+.monitoring__controls label:hover { 
+    color: rgb(77, 77, 223);
+    cursor: pointer;
+}
+
+
+.monitor-show {
+    display: none;
+}
+
+.trucks-stats {
+    padding: 0 1rem;
+    margin: 1rem 0;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.stats span {
+    font-style: italic;
+}
