@@ -23,6 +23,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AlertComponent } from './alert/alert.componet';
 
 const stompConfig: StompConfig = {
      url: "ws://" + window.location.hostname + ":" + window.location.port + "/api/updates",
@@ -42,7 +43,8 @@ const stompConfig: StompConfig = {
     MapComponent,
     HeaderComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
