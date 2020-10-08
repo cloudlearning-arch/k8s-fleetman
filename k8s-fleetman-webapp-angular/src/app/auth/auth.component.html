@@ -1,0 +1,35 @@
+<div id="authForm">
+    <div>
+        <div class="alert alert-danger" *ngIf="error">
+        <p>{{ error }}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: cente;">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+        <div class="form-group">
+            <input 
+                type="email" 
+                placeholder="Email"
+                class="form-control"
+                ngModel name="email"
+                required
+                email
+            >
+        </div>
+        <div class="form-group">
+            <input 
+                type="password" 
+                placeholder="password" 
+                class="form-control"
+                ngModel name="password"
+                required
+                minlength="6"
+            >
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up'}}</button> |
+            <button class="btn btn-success" (click)="onSwitchMode()" type="button">{{ isLoginMode ? 'Sign Up' : 'Switch to Login' }}</button>
+        </div>
+    </form>
+</div>
