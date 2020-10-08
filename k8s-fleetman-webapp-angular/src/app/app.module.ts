@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { VehicleService } from './vehicle.service';
 
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 import { MapComponent } from './map/map.component';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
@@ -17,8 +17,12 @@ import { HeaderComponent } from './header/header.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { DOCUMENT } from '@angular/platform-browser';
-import { MonitoringComponent } from './monitoring/monitoring.component';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app.routing.module';
+import { AuthComponent } from './auth/auth.component';
+import { HomeComponent } from './home/home.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 const stompConfig: StompConfig = {
      url: "ws://" + window.location.hostname + ":" + window.location.port + "/api/updates",
@@ -33,24 +37,29 @@ const stompConfig: StompConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     VehiclesComponent,
     MapComponent,
     HeaderComponent,
-    MonitoringComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     LeafletModule.forRoot(),
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [VehicleService,
               StompService,
               {
                  provide: StompConfig,
                  useValue: stompConfig
-              }],
+              },
+              {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+            ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
