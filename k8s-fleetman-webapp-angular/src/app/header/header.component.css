@@ -1,0 +1,14 @@
+.version {
+    position: absolute;
+    top: 1rem;
+    left: -3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 2rem;
+    background-color: rgba(20, 20, 20, 0.918);
+    color: white;
+    z-index: 2000;
+    transform: rotateZ(-45deg);
+}
