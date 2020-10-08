@@ -10,5 +10,6 @@
     <li>
       <a class="nav-link p-2" href="http://blog.chesterwood.io"><span class="fa fa-2x fa-rss"></span></a>
     </li>
+    <li *ngIf="isAuthenticated"><a class="nav-link p-2" (click)="onLogout()"><span class="fa fa-2x fa-sign-out"></span></a></li>
   </ul>
 </nav>
